@@ -1,5 +1,7 @@
 # simple-udp-communicator
 
+[![CircleCI](https://circleci.com/gh/65usami/simple-udp-communicator/tree/master.svg?style=svg)](https://circleci.com/gh/65usami/simple-udp-communicator/tree/master)
+
 ## Feature
 
 Check UDP comminication easily.
