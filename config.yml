@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/test_env
+    docker:
+      - image: circleci/python:3.6.7
+    steps:
+      - checkout
+      - run:
+          name: test-coverage
+          command: |
+            python -m unittest discover tests
