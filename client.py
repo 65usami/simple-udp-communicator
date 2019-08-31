@@ -135,8 +135,8 @@ class UdpSender:
 
     def __is_send_data(self, send_data_bytes, sent_data_size):
         this_send_data_bps = self.__to_bps(len(send_data_bytes))
-        if (self.__max_bps -
-                this_send_data_bps) > self.__to_bps(sent_data_size):
+        if self.__max_bps >= (self.__to_bps(sent_data_size) +
+                              this_send_data_bps):
             return True
         return False
 
