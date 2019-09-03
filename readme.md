@@ -10,42 +10,59 @@ Check UDP comminication easily.
 
 ![demo_simple_udp_communicator](https://github.com/65usami/simple-udp-communicator/blob/master/imgs/demo_simple_udp_communicator.gif)
 
-## Requirements
-
-python 3.4.0 more
-
-## Supports
-
-MacOS, Linux, Raspberry Pi, Windows
-
 ## Usage
 
-**Server**
+**MacOS, Linux(Ubuntu, CentOS, etc..), Raspberry Pi**
+
+_Server_
 ```
-python server.py PORT
+server.sh PORT
 
 # e.g.
-# python server.py 13001
+# server.sh 13001
 ```
 
-**Client**
+_Client_
 ```
-python client.py 'IP ADDRESS' PORT
+client.sh 'IP ADDRESS' PORT
 
 # e.g.
-# python client.py '192.168.1.10' 13001
+# client.sh '192.168.1.10' 13001
 ```
+
+**Windows**
+
+_Server_
+```
+server.bat PORT
+
+# e.g.
+# server.bat 13001
+```
+
+_Client_
+```
+client.bat 'IP ADDRESS' PORT
+
+# e.g.
+# client.bat '192.168.1.10' 13001
+```
+
 ## Options
 
-**Server**
+_Server_
 ```
+source venv/bin/activate
 python server.py PORT -l
+deactivate
 ```
 - `-l` :Repeat server.py. Close by `Ctrl + c`
 
-**Client**
+_Client_
 ```
+source venv/bin/activate
 python client.py 'IP ADDRESS' PORT MAX_MBPS DURATION_SEC_TIME MTU_SIZE
+deactivate
 
 # e.g.
 # python client.py '192.168.1.10' 13001 2.0 3 1390
