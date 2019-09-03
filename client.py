@@ -42,7 +42,9 @@ class UdpSender:
         self.__max_mbps = float(max_mbps)
         self.__max_bps = self.__max_mbps * 1000000
         self.__duration_sec_time = int(duration_sec_time)
-        self.__mtu_size = (mtu_size - 64) # Deduct UDP header size
+        self.__deduction_udp_header_size = 64 # Deduct UDP header size as packet layter
+        self.__mtu_original_size = mtu_size
+        self.__mtu_size = (self.__mtu_original_size - self.__deduction_udp_header_size)
 
         self.__is_success = True
         self.__udp_socket = None
@@ -230,7 +232,8 @@ class UdpSender:
         print("Port               :", self.__port)
         print("Maximum mbps       :", self.__max_mbps)
         print("Duration time(sec) :", self.__duration_sec_time)
-        print("MTU                :", self.__mtu_size)
+        print("Actual MTU         :", self.__mtu_size)
+        print(" - Original MTU    :", self.__mtu_original_size)
 
     def __print_header_process(self):
         print()
