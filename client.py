@@ -42,7 +42,7 @@ class UdpSender:
         self.__max_mbps = float(max_mbps)
         self.__max_bps = self.__max_mbps * 1000000
         self.__duration_sec_time = int(duration_sec_time)
-        self.__mtu_size = mtu_size
+        self.__mtu_size = (mtu_size - 64) # Deduct UDP header size
 
         self.__is_success = True
         self.__udp_socket = None
