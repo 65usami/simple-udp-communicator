@@ -50,6 +50,13 @@ client.bat 'IP ADDRESS' PORT
 
 ## Options
 
+- Only python enabled
+
+- venv for Windows
+    - `venv_windows\Scripts\activate.bat`
+    - `venv_windows\Scripts\deactivate.bat`
+
+
 _Server_
 ```
 source venv/bin/activate
