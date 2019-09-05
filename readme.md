@@ -10,73 +10,49 @@ Check UDP comminication easily.
 
 ![demo_simple_udp_communicator](https://github.com/65usami/simple-udp-communicator/blob/master/imgs/demo_simple_udp_communicator.gif)
 
+## Requirements
+
+python 3.4.0 more
+
+## Supports
+
+MacOS, Linux, Raspberry Pi, Windows
+
 ## Usage
 
-**MacOS, Linux(Ubuntu, CentOS, etc..), Raspberry Pi**
-
-_Server_
+**Server**
 ```
-server.sh PORT
+python server.py PORT
 
 # e.g.
-# server.sh 13001
+# python server.py 13001
 ```
 
-_Client_
+**Client**
 ```
-client.sh 'IP ADDRESS' PORT
+python client.py 'IP ADDRESS' PORT
 
 # e.g.
-# client.sh '192.168.1.10' 13001
+# python client.py '192.168.1.10' 13001
 ```
-
-**Windows**
-
-_Server_
-```
-server.bat PORT
-
-# e.g.
-# server.bat 13001
-```
-
-_Client_
-```
-client.bat 'IP ADDRESS' PORT
-
-# e.g.
-# client.bat '192.168.1.10' 13001
-```
-
 ## Options
 
-- Only python enabled
-
-- venv for Windows
-    - `venv_windows\Scripts\activate.bat`
-    - `venv_windows\Scripts\deactivate.bat`
-
-
-_Server_
+**Server**
 ```
-source venv/bin/activate
 python server.py PORT -l
-deactivate
 ```
 - `-l` :Repeat server.py. Close by `Ctrl + c`
 
-_Client_
+**Client**
 ```
-source venv/bin/activate
-python client.py 'IP ADDRESS' PORT MAX_MBPS DURATION_SEC_TIME MTU_SIZE
-deactivate
+python client.py 'IP ADDRESS' PORT MAX_MBPS DURATION_SEC_TIME PACKET_SIZE
 
 # e.g.
 # python client.py '192.168.1.10' 13001 2.0 3 1390
 ```
 - `MAX_MBPS` : Maximum upload speeds of per seconds.
 - `DURATION_SEC_TIME` : Duration of upload time by seconds.
-- `MTU_SIZE` : MTU size.
+- `PACKET_SIZE` : Packet size. It is detected from related packet header size.
 
 ## License
 
