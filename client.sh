@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 uname_m=`uname -m`
 processor=${uname_m:0:3}
