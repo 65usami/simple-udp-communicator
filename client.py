@@ -36,15 +36,15 @@ class UdpSender:
                  port=13001,
                  max_mbps=3.0,
                  duration_sec_time=5,
-                 mtu_size=1500):
+                 packet_size=1500):
         self.__ip = ip
         self.__port = int(port)
         self.__max_mbps = float(max_mbps)
         self.__max_bps = self.__max_mbps * 1000000
         self.__duration_sec_time = int(duration_sec_time)
         self.__deduction_udp_header_size = 64 # Deduct UDP header size as packet layter
-        self.__mtu_original_size = mtu_size
-        self.__mtu_size = (self.__mtu_original_size - self.__deduction_udp_header_size)
+        self.__packet_original_size = packet_size
+        self.__packet_size = (self.__packet_original_size - self.__deduction_udp_header_size)
 
         self.__is_success = True
         self.__udp_socket = None
@@ -52,7 +52,7 @@ class UdpSender:
         self.__sent_data_total_bytes_size = 0
         self.__sent_data_total_count = 0
 
-        self.__data = ''.join(['1' for i in range(0, self.__mtu_size)])
+        self.__data = ''.join(['1' for i in range(0, self.__packet_size)])
 
     def execute(self):
         try:
@@ -183,7 +183,7 @@ class UdpSender:
         send_header_json_data = json.dumps(data_dict)
         send_header_data = str(
             len(send_header_json_data)).zfill(4) + send_header_json_data
-        send_data = (send_header_data + self.__data)[:self.__mtu_size]
+        send_data = (send_header_data + self.__data)[:self.__packet_size]
         send_data_bytes = send_data.encode('utf-8')
         return datetime_key, send_data_bytes
 
@@ -210,7 +210,7 @@ class UdpSender:
 
     def __create_send_data_bytes(self, header):
         send_data_bytes = ((header +
-                            self.__data)[:self.__mtu_size]).encode('utf-8')
+                            self.__data)[:self.__packet_size]).encode('utf-8')
         return send_data_bytes
 
     def __to_bps(self, byte_size):
@@ -232,8 +232,8 @@ class UdpSender:
         print("Port               :", self.__port)
         print("Maximum mbps       :", self.__max_mbps)
         print("Duration time(sec) :", self.__duration_sec_time)
-        print("Actual MTU         :", self.__mtu_size)
-        print(" - Original MTU    :", self.__mtu_original_size)
+        print("Actual Packet size :", self.__packet_size)
+        print(" - Original size   :", self.__packet_original_size)
 
     def __print_header_process(self):
         print()
@@ -272,7 +272,7 @@ if __name__ == "__main__":
         if len(sys.argv) > 4:
             params_dict.update(duration_sec_time=sys.argv[4])
         if len(sys.argv) > 5:
-            params_dict.update(mtu_size=sys.argv[5])
+            params_dict.update(packet_size=sys.argv[5])
 
         udp_sender = UdpSender(**params_dict)
         udp_sender.execute()
