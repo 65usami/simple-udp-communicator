@@ -8,7 +8,7 @@ Check UDP comminication easily.
 
 ![mac_raspberrypi](https://github.com/65usami/simple-udp-communicator/blob/master/imgs/mac_raspberrypi.png)
 
-![demo_simple_udp_communicator](https://github.com/65usami/simple-udp-communicator/blob/master/imgs/demo_simple_udp_communicator.gif)
+![demo_simple_udp_communicator](https://github.com/65usami/simple-udp-communicator/blob/master/imgs/demo_simple_udp.gif)
 
 ## Requirements
 
@@ -52,7 +52,7 @@ python client.py 'IP ADDRESS' PORT MAX_MBPS DURATION_SEC_TIME PACKET_SIZE
 ```
 - `MAX_MBPS` : Maximum upload speeds of per seconds.
 - `DURATION_SEC_TIME` : Duration of upload time by seconds.
-- `PACKET_SIZE` : Packet size. It is detected from related packet header size.
+- `PACKET_SIZE` : This size is detected from related packet header size.
 
 ## License
 
