@@ -75,6 +75,12 @@ class UdpReceiver:
         self.__udp_socket.settimeout(2.0)
         self.__udp_socket.bind(('', self.__port))
 
+        self.__sent_data_total_count = 0
+        self.__received_data_total_count = 0
+        self.__received_data_total_bytes_size = 0
+        received_data_dict.clear()
+
+        self.__print_header_process()
         while True:
             is_socket_error = False
             is_socket_timeout = False
@@ -106,13 +112,6 @@ class UdpReceiver:
             datetime_key = header_dict['DatetimeKey']
             is_first = header_dict['IsFirst']
             is_end = header_dict['IsEnd']
-
-            if is_first:
-                self.__sent_data_total_count = 0
-                self.__received_data_total_count = 0
-                self.__received_data_total_bytes_size = 0
-                received_data_dict.clear()
-                self.__print_header_process()
 
             if is_end:
                 self.__sent_data_total_count = header_dict['TotalSentCount']
