@@ -14,7 +14,7 @@ jobs:
       - run:
           name: 実行時の PATH 書き換えおよび環境変数定義
           command: |
-            echo 'export PATH=/path/to/foo/bin:$PATH' >> $BASH_ENV
+            export $(cat .env | grep -v ^# | xargs); sh test.sh >> $BASH_ENV
             source $BASH_ENV
       - run:
           name: 一覧
