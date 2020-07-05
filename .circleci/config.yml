@@ -12,6 +12,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: 実行時の PATH 書き換えおよび環境変数定義
+          command: |
+            echo 'export PATH=/path/to/foo/bin:$PATH' >> $BASH_ENV
+            source $BASH_ENV
+      - run:
           name: test-coverage
           command: |
             python -m unittest discover tests
+
+
