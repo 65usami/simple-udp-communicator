@@ -17,6 +17,10 @@ jobs:
             echo 'export PATH=/path/to/foo/bin:$PATH' >> $BASH_ENV
             source $BASH_ENV
       - run:
+          name: 一覧
+          command: |
+            printenv
+      - run:
           name: test-coverage
           command: |
             python -m unittest discover tests
